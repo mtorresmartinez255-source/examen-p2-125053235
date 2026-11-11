@@ -1,0 +1,23 @@
+hadoop-1  | Generating public/private ed25519 key pair.
+hadoop-1  | Your identification has been saved in /ssh/id_ed25519
+hadoop-1  | Your public key has been saved in /ssh/id_ed25519.pub
+hadoop-1  | The key fingerprint is:
+hadoop-1  | SHA256:g5wOFLYxClBN6zhdU1ycBrQaQrmzhVDHLDaaMgmzWA4 hadoop-miguel-125053235
+hadoop-1  | The key's randomart image is:
+hadoop-1  | +--[ED25519 256]--+
+hadoop-1  | |+..+O+.o++..     |
+hadoop-1  | |E.o+*Bo...+      |
+hadoop-1  | |oB.===+ ..       |
+hadoop-1  | |* +=++.*         |
+hadoop-1  | | oo ++= S        |
+hadoop-1  | |   ..o   .       |
+hadoop-1  | |      .          |
+hadoop-1  | |                 |
+hadoop-1  | |                 |
+hadoop-1  | +----[SHA256]-----+
+hadoop-1  | SSH iniciado correctamente.
+hadoop-1  | Resultados anteriores encontrados. No se repite MapReduce.
+hadoop-1  | Hadoop listo. Resultados disponibles.
+hadoop-1  | SSH iniciado correctamente.
+hadoop-1  | Resultados anteriores encontrados. No se repite MapReduce.
+hadoop-1  | Hadoop listo. Resultados disponibles.

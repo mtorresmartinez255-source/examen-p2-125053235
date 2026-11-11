@@ -1,0 +1,5 @@
+NAME                              IMAGE                           COMMAND                  SERVICE     CREATED          STATUS                     PORTS
+examen-p2-125053235-api-1         examen-p2-125053235-api         "./iniciar.sh"           api         43 minutes ago   Up 4 minutes               0.0.0.0:5056->5000/tcp, [::]:5056->5000/tcp
+examen-p2-125053235-db-1          postgres:16-alpine              "docker-entrypoint.s…"   db          43 minutes ago   Up 2 minutes (healthy)     5432/tcp
+examen-p2-125053235-generador-1   examen-p2-125053235-generador   "./iniciar.sh"           generador   43 minutes ago   Exited (0) 4 minutes ago   
+examen-p2-125053235-hadoop-1      examen-p2-125053235-hadoop      "/usr/local/bin/inic…"   hadoop      6 minutes ago    Exited (0) 4 minutes ago   

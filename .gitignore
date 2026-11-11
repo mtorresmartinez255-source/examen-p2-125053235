@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+
+data/
+resultados/
+ssh-api/
+
+__pycache__/
+*.pyc
+*.csv
+*.crc
+*.pem
+
+.DS_Store
+
+*.bak

@@ -1,0 +1,65 @@
+name: examen-p2-125053235
+
+services:
+
+  generador:
+    build:
+      context: .
+      dockerfile: generador/Dockerfile
+    volumes:
+      - ./data:/app/data
+      - ./ssh-api:/app/ssh-api
+    restart: "no"
+
+  hadoop:
+    build:
+      context: .
+      dockerfile: hadoop/Dockerfile
+    depends_on:
+      generador:
+        condition: service_completed_successfully
+    volumes:
+      - ./data:/data/input
+      - ./resultados:/data/output
+      - ./ssh-api:/ssh-api:ro
+      - ./mapreduce:/opt/mapreduce:ro
+    restart: "no"
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_miguel:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    depends_on:
+      hadoop:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5056:5000"
+    volumes:
+      - ./resultados:/app/resultados:ro
+      - ./scripts:/app/scripts:ro
+    restart: unless-stopped
+
+volumes:
+  postgres_miguel:
